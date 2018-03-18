@@ -1,0 +1,92 @@
+doctype html
+html(lang='en')
+  head
+    title podjunky
+    link(rel='stylesheet' href=`/app${min}.css`)
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500')
+    meta(name='viewport' content='width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=no')
+  body
+
+    nav
+
+      .port
+        a(href='/').item
+          h1.logo podjunky 💉
+        .cats.item
+          a(href='/?explore=true').cat Podcasts
+          a(href='/').cat Subscriptions
+          if !username
+            form(action='/start' method='post').login-form.cat
+              input(type='hidden' name='url' value=url)
+              button(type='submit').login Login
+          else
+            form(action='/logout' method='post').logout-form.cat
+              input(type='hidden' name='url' value=url)
+              button(type='submit').logout Logout
+
+      .starboard
+        form(action='/search' method='get').search-form.item
+          input(type='text' name='term').input
+          input(type='submit' value='Search').search
+        if username
+          a(href='/settings').user.item
+            img(src=`${user.avatar}`).avatar
+
+    .wrapper
+      if latest || all
+        .heading
+          h1.heading Subscriptions
+        .sort
+          a(href='?latest=true' class= latest ? 'selected' : '').sort-item.latest LATEST
+          a(href='?all=true' class= all ? 'selected' : '').sort-item.all ALL
+
+        if latest
+          ul.episodes
+            each episode in episodes
+              li
+                a(href=episode.link target='_blank').episode
+                  .episode-title #{episode.title} #[span.pipe |] #[span.episode-author #{episode.author}]
+                  .episode-subtitle #[span.episode-duration #{episode.duration}] #[span.pipe |] #[span.episode-date #{episode.date}]
+
+        else if all
+          .podcasts
+            each podcast in podcasts
+
+              .podcast(data-id=podcast.collectionId)
+                a(href=`/lookup?id=${podcast.collectionId}`)
+                  img(src=podcast.artworkUrl100.replace('100x100','200x200')).podcast-thumbnail
+                  .podcast-titles
+                    .podcast-title= podcast.trackName
+                    .podcast-artist= podcast.artistName
+                if username
+                  .subscribe.subscribed subscribe
+
+      else if rss
+        .heading
+          h1.heading Top podcasts
+        .podcasts
+          each podcast in podcasts
+            a(href=`/lookup?id=${podcast.id}` data-id=podcast.id).podcast
+              img(src=podcast.artworkUrl100).podcast-thumbnail
+              .podcast-titles
+                .podcast-title= podcast.name
+                .podcast-artist= podcast.artistName
+
+      else if podcast
+        .podcasts
+          .podcast(data-id=podcast.collectionId)
+            img(src=podcast.artworkUrl100.replace('100x100','200x200')).podcast-thumbnail
+            .podcast-titles
+              .podcast-title= podcast.trackName
+              .podcast-artist= podcast.artistName
+            if username
+              .subscribe(class= subbed ? 'subscribed' : '') subscribe
+
+        ul.episodes
+          each episode in episodes
+            li
+              a(href=episode.link target='_blank').episode
+                .episode-title= episode.title
+                .episode-subtitle #[span.episode-duration #{episode.duration}] #[span.pipe |] #[span.episode-date #{episode.date}]
+
+    script(src=`/app${min}.js`)

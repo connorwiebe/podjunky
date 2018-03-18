@@ -1,0 +1,293 @@
+$primary: #333
+$secondary: #7e899b
+$border: #e6edf4
+$background: #f9fbfc
+$border-radius: 2px
+$nav-height: 96px
+
+/* defaults
+
+body
+  -webkit-font-smoothing: antialiased
+  text-rendering: optimizeLegibility
+  padding: 0
+  margin: 0
+  letter-spacing: -.15px
+  color: $primary
+  font: 14px 'Roboto','Helvetica Neue',Helvetica,Arial,sans-serif
+  font-weight: 300
+
+.wrapper
+  display: flex
+  flex-direction: column
+  min-height: calc(100vh - #{ $nav-height } - 50px)
+  padding: 0 50px 50px 50px
+
+h1
+  margin: 0
+  font-weight: 300
+
+img,i
+  vertical-align: bottom
+
+a
+  text-decoration: none
+  color: inherit
+
+ul
+  padding: 0
+  margin: 0
+  list-style: none
+
+body .show
+  display: flex
+
+body .selected
+  font-weight: 500
+
+.sort
+  display: flex
+
+.sort-item
+  font-size: .8rem
+  margin-left: 10px
+  font-weight: 300
+
+.heading
+  height: 200px
+  display: flex
+  align-items: center
+  justify-content: center
+
+/* nav
+
+nav
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding: 30px 40px
+
+/* left
+
+.port
+  display: flex
+  align-items: center
+
+.logo
+  font-weight: 400
+  font-size: 1.5rem
+
+.cats
+  display: flex
+  margin-left: 25px
+
+.cats .cat
+  margin: 0 10px
+  font-weight: 400
+  font-size: .9rem
+
+.login-form .login, .logout-form .logout
+  background: none
+  font-size: .9rem
+  border: none
+  padding: 0
+  color: $primary
+  outline-width: 0
+  font-family: 'Roboto','Helvetica Neue',Helvetica,Arial,sans-serif
+  &:hover
+    cursor: pointer
+
+/* right
+
+.starboard
+  display: flex
+  align-items: center
+
+.search-form
+  display: flex
+  height: 32px
+
+.input
+  border: 1px solid $primary
+  padding: 5px 10px
+  outline-width: 0
+  border-radius: $border-radius
+  font-size: .95rem
+  font-family: 'Roboto','Helvetica Neue',Helvetica,Arial,sans-serif
+  &:focus
+    border-color: #007eff
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 0 3px rgba(0,126,255,.1)
+
+.search
+  outline-width: 0
+  margin-left: 10px
+  font-weight: 400
+  font-size: .85rem
+  color: $primary
+  min-width: 80px
+  padding: 0 18px
+  height: 32px
+  border-radius: $border-radius
+  background: none
+  border: 1px solid $primary
+  transition: all 150ms ease-out
+  font-family: 'Roboto','Helvetica Neue',Helvetica,Arial,sans-serif
+  &:hover
+    cursor: pointer
+    background: $primary
+    color: #fff
+
+.user
+  margin-left: 25px
+
+.user:hover
+  cursor: pointer
+
+.user .avatar
+  width: 36px
+  height: 36px
+  object-fit: cover
+  border-radius: 40px
+
+/* podcasts
+
+.podcasts
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  margin-top: 25px
+
+.podcast
+  display: flex
+  flex-direction: column
+  width: 110px
+  margin: 25px 15px
+
+.podcast-thumbnail
+  width: 110px
+  height: 110px
+  object-fit: cover
+  border-radius: $border-radius
+
+.podcast-titles
+  display: flex
+  flex-direction: column
+  margin-top: 10px
+
+.podcast-title
+  font-weight: 400
+
+.podcast-artist
+  color: $secondary
+
+.subscribe
+  outline-width: 0
+  padding: 10px 20px
+  font-weight: 500
+  font-size: .7rem
+  text-align: center
+  background: $primary
+  color: #fff
+  border: 1px solid rgba(0,0,0,0)
+  border-radius: $border-radius
+  text-transform: uppercase
+  margin-top: 15px
+  font-family: 'Roboto','Helvetica Neue',Helvetica,Arial,sans-serif
+  &:hover
+    cursor: pointer
+
+.subscribed
+  font-weight: 400
+  background: #fff
+  color: $secondary
+  border: none
+  border: 1px solid $border
+
+/* episodes
+
+.episodes
+  margin-top: 50px
+
+.episodes li
+  border: 1px solid $border
+  margin-bottom: 5px
+  &:hover
+    background: $background
+
+.episodes li:last-of-type
+  border-bottom: 1px solid $border
+  margin-bottom: 0
+
+.episode
+  display: flex
+  justify-content: space-between
+  padding: 10px 20px
+
+.episode-author
+  font-weight: 300
+
+.episode span
+  white-space: nowrap
+
+.episode-title
+  font-weight: 400
+
+.episode-subtitle
+  display: flex
+  padding-left: 20px
+
+.episode-date
+  font-weight: 300
+
+.pipe
+  font-weight: 500
+  padding: 0 5px
+
+/* media queries
+
+/* < 900px
+@media screen and (max-width: 900px)
+  nav
+    flex-direction: column
+  .port
+    flex-direction: column
+  .port
+    margin-top: 25px
+  .starboard
+    flex-direction: column-reverse
+  .user
+    margin: 0
+  .user .avatar
+    width: 60px
+    height: 60px
+  .starboard .item
+    margin-top: 25px
+  .port .cats
+    margin: 0
+    margin-top: 15px
+
+/* < 600px
+@media screen and (max-width: 600px)
+  .wrapper
+    padding: 0 25px 50px 25px
+  .podcast
+    display: flex
+    align-items: center
+    width: 100%
+    margin-top: 35px
+  .podcast-thumbnail
+    width: 100%
+    max-width: 200px
+    height: 200px
+  .episode
+    flex-direction: column
+    justify-content: center
+    padding: 15px
+    height: 80px
+  .episode-title
+    line-height: 1.4
+    font-size: .95rem
+    margin-bottom: 5px
+  .episode-subtitle
+    padding: 0
+    margin-top: 2px

@@ -1,0 +1,51 @@
+{
+  "name": "podjunky",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "author": "Connor Wiebe",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.2",
+    "connect-redis": "^3.3.3",
+    "crypto-alphanumeric-id": "^1.0.1",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "express-promise-router": "^1.1.1",
+    "express-session": "^1.15.6",
+    "firebase-admin": "^5.10.0",
+    "jquery": "^3.3.1",
+    "moment": "^2.20.1",
+    "pug": "^2.0.0-rc.4",
+    "redis": "^2.8.0",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "serve-favicon": "^2.4.5",
+    "shave": "^2.1.3",
+    "statuses": "^1.4.0",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "browserify": "^14.5.0",
+    "node-sass": "^4.7.2",
+    "nodemon": "^1.17.0",
+    "strip-ansi": "^3.0.1",
+    "uglify-es": "^3.3.10"
+  },
+  "scripts": {
+    "start-dev": "node utils/shell_scripts/start.js",
+    "sass-build": "find src/sass -type f -not -name '*_*' | node-sass src/sass -do public",
+    "sasquatch": "node-sass src/sass -wdo public",
+    "remove": "find public -maxdepth 1 -type f -not -name '*min*' -not -name 'robots.txt' -delete",
+    "remove-everything": "find public -maxdepth 1 -type f -not -name 'robots.txt' -delete",
+    "bundle": "node utils/shell_scripts/bundle.js",
+    "minify": "node utils/shell_scripts/minify.js",
+    "uglify": "node utils/shell_scripts/uglify.js",
+    "build-dev": "npm run sass-build && npm run bundle",
+    "build-prod": "npm run sass-build && npm run minify && npm run bundle prod && npm run uglify",
+    "build-everything": "npm run build-dev && npm run build-prod",
+    "start": "NODE_ENV=production node app.js"
+  }
+}
